@@ -1,5 +1,5 @@
 const express = require("express");
-
+const serverless = require('serverless-http');
 const app = express();
 
 const cors = require("cors");
@@ -30,4 +30,8 @@ app.use("/tips/",TipsRouter)
           console.log(`Server Running  ✔️   on http://localhost:${PORT}/`)
       }
   })
+
+
+app.use('/.netlify/App', router);
+module.exports.handler = serverless(app);
   
