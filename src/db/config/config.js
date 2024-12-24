@@ -7,7 +7,13 @@ module.exports = {
     database: process.env.DB_NAME || 'database_development',
     host: process.env.DB_HOST || '127.0.0.1',
     dialect: 'postgres',
-    url:process.env.DB_URL
+    url:process.env.DB_URL,
+    dialectOptions: {
+      ssl: {
+        require: true, // Force SSL connection
+        rejectUnauthorized: false // Skip SSL certificate validation (if needed)
+      }
+    }
   },
   test: {
     username: process.env.DB_USER || 'postgres',

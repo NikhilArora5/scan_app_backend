@@ -7,13 +7,19 @@ const dbConfig = config[env];
 
 const sequelize = new Sequelize(dbConfig.url, {
   dialect: dbConfig.dialect,
-  dialectModule:pg
+  dialectModule:pg,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // Optional, depending on your provider
+    },
+  }
 });
 
 const db = {};
 
 // Import Models Here
-// db.User = require('./user')(sequelize, Sequelize.DataTypes);
+db.Devs = require('./devs')(sequelize, Sequelize.DataTypes);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
