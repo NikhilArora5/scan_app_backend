@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const { sequelize } = require('./src/db/models/index');
-const tipsRouter=require("./src/modules/Tips/index")
+const tipsRouter=require("./src/Modules/Tips/index")
 app.get('/hello', (req, res) => {
   res.send('Hello World!');
 });
